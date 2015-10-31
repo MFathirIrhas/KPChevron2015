@@ -1,0 +1,278 @@
+﻿@*@model IEnumerable<KPChevron2015.Models.Survey>*@
+@model PagedList.IPagedList<KPChevron2015.Models.Survey>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+
+@{
+    ViewBag.Title = "Surveys";
+}
+
+<h2>Surveys Waiting To be Approved</h2>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+@using (Html.BeginForm("Index", "DApproval", FormMethod.Get))
+{
+    <p>
+        Search The Survey: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @placeholder = "Search...." })
+        <input type="submit" value="Search" />
+    </p>
+}
+<h4>All Survey :</h4>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Well.WellName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().SurveyDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Team)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.First().RequestBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().RequestDate)
+        </th>*@
+        <th>
+            @Html.ActionLink("Request By", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Request Date", "Index", new { sortOrder = ViewBag.DateSortParm })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Comment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Status)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Progress)
+        </th>*@
+        @*<th>
+            @Html.DisplayNameFor(model => model.ApprovedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApprovedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubmitBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubmitDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PICName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FileData)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Well.WellName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SurveyDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Team)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RequestBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RequestDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Progress)
+        </td>*@
+        @*<td>
+            @Html.DisplayFor(modelItem => item.ApprovedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApprovedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubmitBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubmitDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PICName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FileData)
+        </td>*@
+        @if (item.Status != "Submitted" && item.Status !="Approved")
+        {
+            <td>
+                @Html.ActionLink("Approval", "Edit", new { id = item.SurveyID })
+                @*@Html.ActionLink("Details", "Details", new { id=item.SurveyID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.SurveyID })*@
+            </td>
+        }
+        else if (item.Status == "Approved")
+        {
+            <td>*Approved</td>
+        }
+        else
+        {
+            <td>*Submitted</td>
+        }
+        
+    </tr>
+}
+
+</table>
+
+
+<br />
+<h4>Need For Approval :</h4>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Well.WellName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().SurveyDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Team)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().RequestBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().RequestDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Comment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Status)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Progress)
+            </th>*@
+        @*<th>
+                @Html.DisplayNameFor(model => model.ApprovedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApprovedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubmitBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubmitDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PICName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FileData)
+            </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.Status == "Waiting For Approval")
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Well.WellName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SurveyDesc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Team)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RequestBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RequestDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Progress)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.ApprovedBy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ApprovedDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SubmitBy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SubmitDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PICName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FileData)
+                    </td>*@
+                <td>
+                    @Html.ActionLink("Approval", "Edit", new { id = item.SurveyID })
+                    @*@Html.ActionLink("Details", "Details", new { id=item.SurveyID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id=item.SurveyID })*@
+                </td>
+            </tr>
+        }
+
+    }
+
+</table>
+
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of
+@Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new
+    {
+        page,
+        sortOrder = ViewBag.CurrentSort,
+        currentFilter =
+            ViewBag.CurrentFilter
+    }))
+
+<div>
+    @Html.ActionLink("Back","Index","HomeApproval")
+</div>

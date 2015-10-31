@@ -1,0 +1,68 @@
+﻿@using KPChevron2015.Models;
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@*@{
+    var user = Session["user"] as Enrollment;
+}
+<h3>Welcome @user.Name</h3>*@
+
+<div class="jumbotron">
+    <h1>Welcome To Well Survey Request Page</h1>
+    <p class="lead">This Page Is For Requesting Survey For Any Well Under Chevron Authorization</p>
+    <p><a href="http://www.chevronindonesia.com/" class="btn btn-primary btn-lg">Go To Site &raquo;</a></p>
+    
+    @*@if (Session["pe"] != null)
+    {
+        <a href='@Url.Action("Index", "HomeRequest")' style="float:left; width:80px">
+            <input type='button' class="btn btn-primary btn-lg" value='Go To Your Page &raquo' />
+        </a>
+    }
+    else if (Session["leader"] != null)
+    {
+        <a href='@Url.Action("Index", "HomeApproval")' style="float:left; width:80px">
+            <input type='button' class="btn btn-primary btn-lg" value='Go To Your Page &raquo' />
+        </a>
+    }
+    else if (Session["pic"] != null)
+    {
+        <a href='@Url.Action("Index", "HomePIC")' style="float:left; width:80px">
+            <input type='button' class="btn btn-primary btn-lg" value='Go To Your Page &raquo' />
+        </a>
+    }
+    else if (Session["admin"] != null)
+    {
+        <a href='@Url.Action("Index", "Admins")' style="float:left; width:80px">
+            <input type='button' class="btn btn-primary btn-lg" value='Go To Your Page &raquo' />
+        </a>
+    }
+    else
+    {
+        <a href='@Url.Action("Index", "HomeSubmission")' style="float:left; width:80px">
+            <input type='button' class="btn btn-primary btn-lg" value='Go To Your Page &raquo' />
+        </a>
+    }*@
+</div>
+
+@*<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+            enables a clean separation of concerns and gives you full control over markup
+            for enjoyable, agile development.
+        </p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>*@

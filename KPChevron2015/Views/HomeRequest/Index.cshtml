@@ -1,0 +1,22 @@
+﻿@using KPChevron2015.Models
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    var user = Session["pe"] as Enrollment;
+}
+<h3>Welcome @user.Name</h3>
+<h2>Welcome To Request Page</h2>
+<div class="jumbotron">
+    <p>
+        <a href='@Url.Action("Index", "DRequest")'>
+            <input type='button' value='Request Dashboard &raquo' class="btn btn-primary btn-lg " />
+        </a>
+    </p>
+    
+    <p>
+        <a href='@Url.Action("Index", "Surveys")'>
+            <input type='button' value='Survey Reporting &raquo' class="btn btn-primary btn-lg" />
+        </a>
+    </p>
+</div>

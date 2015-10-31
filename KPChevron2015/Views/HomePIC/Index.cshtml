@@ -1,0 +1,24 @@
+﻿@using KPChevron2015.Models
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    var user = Session["pic"] as Enrollment;
+}
+@*<h3>Welcome @user.Name</h3>*@
+<h3>Welcome @ViewBag.name</h3>
+
+<h2>Welcome To PIC Page</h2>
+<div class="jumbotron">
+    <p>
+        <a href='@Url.Action("Index", "DPIC")'>
+            <input type='button' value='PIC Dashboard &raquo' class="btn btn-primary btn-lg " />
+        </a>
+    </p>
+
+    <p>
+        <a href='@Url.Action("Index", "Surveys")'>
+            <input type='button' value='Survey Reporting &raquo' class="btn btn-primary btn-lg" />
+        </a>
+    </p>
+</div>

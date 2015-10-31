@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Well Survey Request</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink(" ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @*<li>@Html.ActionLink("Request","Index","HomeRequest")</li>
+                    <li>@Html.ActionLink("Approval", "Index", "HomeApproval")</li>
+                    <li>@Html.ActionLink("Submission", "Index", "HomeSubmission")</li>
+                    <li>@Html.ActionLink("PIC Page", "Index", "HomePIC")</li>*@
+                </ul>
+                
+                @if (Session["pe"] == null && Session["leader"] == null && Session["submitter"] == null && Session["pic"] == null && Session["admin"] == null)
+                {
+                    <ul class="nav navbar-right">
+                        <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                    </ul>
+                }
+                else if (Session["pe"] != null || Session["leader"] != null || Session["submitter"] != null || Session["pic"] != null || Session["admin"] != null)
+                {
+                    using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { id = "logOffForm" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <ul class="nav navbar-right">
+                            <li><input type="submit" value="Logout" /></li>
+                            @*<li>@Html.ActionLink("Logout", "Logout", "Account")</li>*@
+                        </ul>
+                    }
+                    
+                    if (Session["pe"] != null)
+                    {
+                        <ul class="nav navbar-right">
+                            <li>@Html.ActionLink("Request Dashboard", "Index", "HomeRequest")</li>
+                        </ul>
+                    }
+                    else if (Session["leader"] != null)
+                    {
+                        <ul class="nav navbar-right">
+                            <li>@Html.ActionLink("Approval Dashboard", "Index", "HomeApproval")</li>
+                        </ul>
+                    }
+                    else if (Session["submitter"] != null)
+                    {
+                        <ul class="nav navbar-right">
+                            <li>@Html.ActionLink("Submission Dashboard", "Index", "HomeSubmission")</li>
+                        </ul>
+                    }
+                    else if (Session["pic"] != null)
+                    {
+                        <ul class="nav navbar-right">
+                            <li>@Html.ActionLink("PIC Dashboard", "Index", "HomePIC")</li>
+                        </ul>
+                    }
+                    else if (Session["admin"] != null)
+                    {
+                        <ul class="nav navbar-right">
+                            <li>@Html.ActionLink("Admin Dashboard", "Index", "Admin")</li>
+                        </ul>
+                    }
+                    
+
+                }
+                
+                @*@if(Request.IsAuthenticated)
+                {
+                    using (Html.BeginForm("Logout","Account",FormMethod.Post, new{id = "_RequestVerificationToken", @class="navbar-right"}))    {
+                        @Html.AntiForgeryToken()
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>@Html.ActionLink("User: " + @ViewBag.name)</li>
+                            <li>@Html.ActionLink("Log Off", "LogOff", "Account")</li>
+                        </ul>
+                    }
+                }*@
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Chevron Pacific Indonesia</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

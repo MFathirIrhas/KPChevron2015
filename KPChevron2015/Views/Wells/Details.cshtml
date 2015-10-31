@@ -1,0 +1,58 @@
+﻿@model KPChevron2015.Models.Well
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Well</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.WellName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WellName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Area)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Area)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastSurveyType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastSurveyType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastSurveyDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastSurveyDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.WellID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

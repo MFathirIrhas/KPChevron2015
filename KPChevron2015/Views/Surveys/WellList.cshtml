@@ -1,0 +1,59 @@
+﻿@model IEnumerable<KPChevron2015.Models.Well>
+
+@{
+    ViewBag.Title = "WellList";
+}
+
+<h2>WellList</h2>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.WellName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Area)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastSurveyType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastSurveyDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.WellName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Location)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Area)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastSurveyType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastSurveyDate)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.WellID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.WellID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.WellID })*@
+        </td>
+    </tr>
+}
+
+</table>
+
+<a href="javascript:void(0);" onclick="history.go(-1);">Back</a>

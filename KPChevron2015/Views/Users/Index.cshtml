@@ -1,0 +1,59 @@
+﻿@model IEnumerable<KPChevron2015.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List Of Users</h2>
+
+@*<p>
+    @Html.ActionLink("Add New User", "Create")
+</p>*@
+<p>
+    <a href='@Url.Action("Create", "Users")'>
+        <input type='button' value='&#43 Add New User' />
+    </a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdateBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdateDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdateBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdateDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UserID }) |
+            @*@Html.ActionLink("Details", "Details", new { id=item.UserID }) |*@
+            @Html.ActionLink("Delete", "Delete", new { id=item.UserID })
+        </td>
+    </tr>
+}
+
+</table>
+
+<br />
+@Html.ActionLink("Back","Index","Admins")

@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Welcome To Admin Page</h2>
+
+<div class="btn-group-vertical" >
+    <h4>Choose Your Menu :</h4>
+    <ul class="nav btn-group-vertical">
+
+        <li>
+            <a href='@Url.Action("Index", "Users")'>
+                <input type='button' value='User &raquo' class="btn btn-group-vertical btn-lg " />
+            </a>
+        </li>
+
+        <li>
+            <a href='@Url.Action("Index", "Roles")'>
+                <input type='button' value='Role &raquo' class="btn btn-group-vertical btn-lg" />
+            </a>
+        </li>
+
+        <li>
+            <a href='@Url.Action("Index", "Enrollments")'>
+                <input type='button' value='Enrollment &raquo' class="btn btn-group-vertical btn-lg" />
+            </a>
+        </li>
+
+        <li>
+            <a href='@Url.Action("Index", "Wells")'>
+                <input type='button' value='Well &raquo' class="btn btn-group-vertical btn-lg" />
+            </a>
+        </li>
+
+        <li>
+            <a href='@Url.Action("Index", "Contractors")'>
+                <input type='button' value='Contractors &raquo' class="btn btn-group-vertical btn-lg" />
+            </a>
+        </li>
+
+        <li>
+            <a href='@Url.Action("Index", "Surveys")'>
+                <input type='button' value='Survey &raquo' class="btn btn-group-vertical btn-lg" />
+            </a>
+        </li>
+
+    </ul>
+</div>
